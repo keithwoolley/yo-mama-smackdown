@@ -24,3 +24,6 @@ span.logo {
 a {
 	color: white;
 }	
+input[type="text"] {
+	font-size: 0.7em; 
+}
