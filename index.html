@@ -54,9 +54,8 @@
 
     //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
     var messageElement = $("<li>");
-    var nameElement = $("<strong class='example-chat-username'></strong>")
-    nameElement.text(username);
-    messageElement.text(message).prepend(nameElement);
+    var text = "Yo Mama " + username + ", " + message;
+    messageElement.text(text);
 
     //ADD MESSAGE
     messageList.append(messageElement)
