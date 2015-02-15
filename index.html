@@ -19,6 +19,11 @@
   </div>
   <ul id='example-messages' class="example-chat-messages"></ul> 
 </div>
+<div>
+  <a id='randomLink' href="#">Random Joke</a>:
+  <span id='randomJoke'>placeholder</span>
+</div>
+
 
 <!-- CHAT JAVACRIPT -->
 <script>
@@ -29,6 +34,13 @@
   var messageField = $('#messageInput');
   var nameField = $('#nameInput');
   var messageList = $('#example-messages');
+  var randomLink = $('#randomLink');
+  var randomJoke = $('#randomJoke');
+
+  //LISTEN FOR RANDOM LINK CLICK EVENT
+  randomLink.click(function (e) {
+    randomJoke.text(generateRandomJoke());
+  });
 
   // LISTEN FOR KEYPRESS EVENT
   messageField.keypress(function (e) {
@@ -61,5 +73,20 @@
     //SCROLL TO BOTTOM OF MESSAGE LIST
     messageList[0].scrollTop = messageList[0].scrollHeight;
   });
+
+  var generateRandomJoke = function() {
+    var jokes = [
+      "Yo mama's so fat, I had to take a train and two buses just to get on her good side.",
+      "Yo mama's so fat, when she turns around, people throw her a welcome back party. ",
+      "Yo mama's so stupid, she got hit by a parked car.",
+      "Yo mama's so stupid, she sold the car for gas money.",
+      "Yo mama's so ugly, she scares away blind kids.",
+      "Yo mama's so ugly, when she gets up, the sun goes down.",
+      "Yo mama's so old, when she was in school there was no history class.",
+      "Yo mama's so old, her birth certificate expired."
+    ];
+    var item = jokes[Math.floor(Math.random() * jokes.length)];
+    return item;
+  }
 </script>
 </body>
