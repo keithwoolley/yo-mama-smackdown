@@ -11,15 +11,12 @@
 <div class="example-chat l-demo-container">
   <header>Yo Mama Smackdown</header>
   <div class='example-chat-toolbar'>
-    <label for="nameInput">Username:</label>
-    <input type='text' id='nameInput' placeholder='enter a username...'>
+    <label for="nameInput">Yo Mama so:</label>
+    <input type='text' id='nameInput' placeholder='enter an adjective...'>,
+    <input type='text' id='messageInput'  placeholder='enter an insult...'>
   </div>
 
-  <ul id='example-messages' class="example-chat-messages"></ul>
-
-  <footer>
-    <input type='text' id='messageInput'  placeholder='Type a message...'>
-  </footer>
+  <ul id='example-messages' class="example-chat-messages"></ul> 
 </div>
 
 <!-- CHAT JAVACRIPT -->
@@ -54,7 +51,7 @@
 
     //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
     var messageElement = $("<li>");
-    var text = "Yo Mama " + username + ", " + message;
+    var text = "Yo Mama so " + username + ", " + message;
     messageElement.text(text);
 
     //ADD MESSAGE
