@@ -9,3 +9,14 @@ body {
 	text-align: center; 
 	color: yellow;
 }
+span.logo {
+	float: left;
+}
+.header:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+.header {
+	margin-bottom: 20px;
+}
