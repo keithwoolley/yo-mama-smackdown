@@ -1,6 +1,15 @@
 <html>
  <head>
   <title>Yo Mama Smackdown</title>
+  <p>
+    Created by for <a href="https://codeday.org/">CodeDay</a> by Keith and new friends.
+    Read the <a href="https://docs.google.com/presentation/d/1u_ndmIRlGUZKeIwKqRkcPdVNfaIInX_94tmRZ44yd1M/edit#slide=id.g62cdabe25_050">Presentation</a>
+  </p>
+  <p>
+    PLEASE KEEP IT CLEAN!  DELETE ANYTHING OFFENSIVE!
+    Contact <a href="mailto:thewoolleyman@gmail.com">thewoolleyman</a> for questions.
+  </p>
+  <hr/>
   <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
@@ -62,11 +71,25 @@
     var data = snapshot.val();
     var username = data.name || "anonymous";
     var message = data.text;
+    var key = snapshot.key();
 
     //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
-    var messageElement = $("<li>");
-    var text = "Yo Mama so " + username + ", " + message;
+    var messageElement = $("<li id='" + key + "'>");
+    var text = "Yo Mama so " + username + ", " + message + " ";
     messageElement.text(text);
+    var deleteElement = $("<a href='#'>(delete)</a>")
+    deleteElement.on('click', function () {
+      var onComplete = function(error) {
+        if (error) {
+          console.log('Delete failed');
+        } else {
+          $("#" + key).remove();
+        }
+      };
+      var messageRef = new Firebase('https://amber-torch-8551.firebaseIO.com/' + key);
+      messageRef.remove(onComplete);
+    });
+    messageElement.append(deleteElement);
 
     //ADD MESSAGE
     messageList.prepend(messageElement)
